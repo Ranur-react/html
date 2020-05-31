@@ -1,0 +1,55 @@
+<?php 
+class Modelakses extends CI_Model{
+
+public function ambildata($id) {
+return $this->db->get_where('hakakses',array('id'=>$id));}
+
+
+public function dataakses_perpage($cari,$per_page,$uri){
+$arraycari = array(
+'id' => $cari,
+'namaperangkat' => $cari
+);
+$this->db->or_like($arraycari);
+return $this->db->get('hakakses',$per_page,$uri);
+}
+
+function dataakses($cari){
+$arraycari=array(
+'id'=>$cari,
+'namaperangkat'=>$cari
+);
+$this->db->or_like($arraycari);
+return $this->db->get('hakakses');
+}
+
+public function hapusdata($id){
+return $this->db->delete('hakakses',array('id'=>$id));
+
+}
+public function updatedata($id,$nama,$ip,$jenis,$mac,$status)
+{
+$field=array(
+'id'=>$id,
+'namaperangkat'=>$nama,
+'ip'=>$nama,
+'jenisperangkat'=>$nama,
+'mac'=>$nama,
+'status'=>$nama
+);
+$this->db->where('id',$id);
+return $this->db->update('hakakses',$field);
+}
+public function simpandata($id,$nama,$ip,$jenis,$mac,$status){
+$field=array(
+'id'=>$id,
+'namaperangkat'=>$nama,
+'ip'=>$ip,
+'jenisperangkat'=>$jenis,
+'mac'=>$mac,
+'status'=>$status
+);
+return $this->db->insert('hakakses',$field);
+}
+}
+?>

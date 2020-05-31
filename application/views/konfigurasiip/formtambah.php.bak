@@ -1,0 +1,82 @@
+
+
+<div class="col-lg-12">
+<div class="box">
+<div class="box-header">
+              <h3 class="box-title"><i class="fa fa-folder"></i>Tambah Data Konfigurasi IP</h3>
+            </div>
+<div class="box-body">
+<strong class="box-title">
+<?php echo anchor('konfigurasiip/index', 'Kembali', array('class' => 'btn btn-warning')) ?>
+</strong>
+<br></br>
+<?php echo $this->session->flashdata('pesan');?>
+<?php echo form_open('konfigurasiip/simpandata', array('class' => 'form-horizontal')) ?>
+
+
+<div class="row form-group">
+	<div class="col col-md-2">
+	<label class="form-control-label">IP Server</label>
+	</div>
+	<div class="col-12 col-md-6">
+	<input type="text" name="nama" class="form-control">
+	<span class="error nama text-red"></span>
+
+	</div>
+</div>
+<div class="row form-group">
+	<div class="col col-md-2">
+	<label class="form-control-label">Network</label>
+	</div>
+	<div class="col-12 col-md-6">
+	<input type="text" name="id" class="form-control">
+	<span class="error id text-red"></span>
+
+	</div>
+</div>
+<div class="row form-group">
+	<div class="col col-md-2">
+	<label class="form-control-label">Netmask</label>
+	</div>
+	<div class="col-12 col-md-6">
+	<input type="text" name="password" class="form-control">
+	<span class="error password text-red"></span>
+
+	</div>
+</div>
+<div class="row form-group">
+	<div class="col col-md-2">
+	<label class="form-control-label">Jumlah Host</label>
+	</div>
+	<div class="col-12 col-md-6">
+	<input type="text" name="password" class="form-control">
+	<span class="error password text-red"></span>
+
+	</div>
+</div>
+<div class="row form-group">
+	<div class="col col-md-2">
+	<label class="form-control-label">Range</label>
+	</div>
+	<div class="col-12 col-md-6">
+	<input type="text" name="password" class="form-control">
+	<span class="error password text-red"></span>
+
+	</div>
+</div>
+
+<div class="row form-group">
+<div class="col col-md-2">
+<button type="submit" class="btn btn-success">
+Simpan Data
+</button>
+</div>
+</div>
+<?php echo form_close(); ?>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	$('.select3').select2();
+	$('.select4').select2();
+</script>

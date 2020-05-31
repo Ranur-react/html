@@ -1,0 +1,69 @@
+<?php 
+class Modelkonfigurasi extends CI_Model{
+
+public function ambildata($id) {
+return $this->db->get_where('hakakses',array('id'=>$id));
+}
+
+
+public function view(){	
+	return $this->db->get('hakakses');
+}
+
+public function ipserver(){	
+	return $this->db->get('level');
+}
+public function konfigurasiip_perpage($cari,$per_page,$uri){
+	$arraycari = array(
+	'id' => $cari,
+	'namaperangkat' => $cari
+	);
+	$this->db->or_like($arraycari);
+	return $this->db->get('hakakses',$per_page,$uri);
+}
+
+function konfigurasiip($cari){
+$arraycari=array(
+'id'=>$cari,
+'namaperangkat'=>$cari
+);
+$this->db->or_like($arraycari);
+return $this->db->get('hakakses');
+}
+
+public function hapusdata($id){
+return $this->db->delete('hakakses',array('id'=>$id));
+
+}
+public function updatedata($params)
+{
+		$field=array(
+		'namaperangkat'=>$params['nama'],
+		'password'=>$params['password'],
+		'level'=>$params['level'],
+		'ip'=>$params['ip_address']
+	);
+
+	$this->db->where('id',$params['id']);
+	return $this->db->update('hakakses',$field);
+}
+public function updatedata_STATUS($params)
+{
+		$field=array('status'=>$params['status']);
+			$this->db->where('id',$params['id']);
+	return $this->db->update('hakakses',$field);
+}
+
+public function simpandata($params){
+	$field=array(
+		'namaperangkat'=>$params['nama'],
+		'id'=>$params['id'],
+		'password'=>$params['password'],
+		'level'=>$params['level'],
+		'ip'=>$params['ip_address'],
+		'status'=>'1'
+	);
+	return $this->db->insert('hakakses',$field);
+}
+}
+?>

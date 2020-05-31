@@ -1,0 +1,73 @@
+<div class="col-lg-12">
+<div class="box">
+<div class="box-header">
+              <h3 class="box-title"><i class="fa fa-folder"></i> Edit Kategori</h3>
+            </div>
+
+
+<div class="box-body">
+<strong>
+<?php echo anchor('dataakses/index', 'Kembali', array('class' => 'btn btn-warning')) ?>
+</strong>
+<br></br>
+<?php echo $this->session->flashdata('pesan'); ?>
+<?php echo form_open('dataakses/update', array('class' => 'form-horizontal')) ?>
+<div class="row form-group">
+<div class="col col-md-2">
+<label class="form-control-label">ID Kategori</label>
+</div>
+<div class="col-12 col-md-4">
+<input type="text" name="id" class="form-control" value="<?php echo $id ; ?>">
+</div>
+</div>
+<div class="row form-group">
+<div class="col col-md-2">
+<label class="form-control-label">Nama Perangkat</label>
+</div>
+<div class="col-12 col-md-6">
+<input type="text" name="nama" class="form-control" value="<?php echo $nama ; ?>">
+</div>
+</div>
+<div class="row form-group">
+<div class="col col-md-2">
+<label class="form-control-label">IP Perangkat</label>
+</div>
+<div class="col-12 col-md-6">
+<input type="text" name="ip" class="form-control" value="<?php echo $ip ; ?>">
+</div>
+</div>
+<div class="row form-group">
+<div class="col col-md-2">
+<label class="form-control-label">Jenis Perangkat</label>
+</div>
+<div class="col-12 col-md-6">
+<input type="text" name="jenis" class="form-control" value="<?php echo $jenis ; ?>">
+</div>
+</div>
+<div class="row form-group">
+<div class="col col-md-2">
+<label class="form-control-label">MacAddres Perangkat</label>
+</div>
+<div class="col-12 col-md-6">
+<input type="text" name="mac" class="form-control" value="<?php echo $mac ; ?>">
+</div>
+</div>
+<div class="row form-group">
+<div class="col col-md-2">
+<label class="form-control-label">Status</label>
+</div>
+<div class="col-12 col-md-6">
+<input type="text" name="status" class="form-control" value="<?php echo $status ; ?>">
+</div>
+</div>
+<button type="submit" class="btn btn-success">
+Update Data
+</button>
+
+</div>
+
+
+
+<?php echo form_close(); ?>
+</div>
+</div>
