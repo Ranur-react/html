@@ -4,7 +4,7 @@ class Modelkonfigurasi extends CI_Model{
 	protected $tabe2='jatah_ip';
 public function view()
 {
-		return $this->db->query("SELECT*FROM ".$this->tabel)->result_array();
+		return $this->db->query("SELECT*FROM konfigurasi WHERE kode IN (SELECT MAX(kode) FROM konfigurasi)")->row_array();
 }
 	public function save($params)
 	{
@@ -19,11 +19,8 @@ public function view()
 		];
 
 			$ipnetwork_left=substr($params['network'], 0, -1); //didapat 192.168.1.xxx
-			
 			$a_len=strlen($ipnetwork_left);
 			$ip_right=substr($params['ip_server'], $a_len);
-			$ip_right+=1;
-
 			$this->db->query("DELETE FROM `jatah_ip`");
 			for ($i=0; $i <= $params['jumlah_host'] ; $i++) { 
 				$ip_right+=1;

@@ -45,32 +45,32 @@ return false;}
 <div class="box-body">
 	<div class="col col-md-2"></div>
 	<div class="col col-md-6">
-		<div><?php // $r=$tampil->row_array(); ?></div>
+		
 		<table class="containts-tabel">
 			<tr>
 				<td class="tb-title">IP Server</td>
 				<td class="titik">:</td>
-				<td class="isi"><!-- <?= $r['ip_server']; ?> --></td>
+				<td class="isi"><?= $data['ip_server']; ?><?= $data['prefix']; ?></td>
 			</tr>
 			<tr>
 				<td class="tb-title">Network</td>
 				<td class="titik">:</td>
-				<td class="isi"><!-- <?= $r['network']; ?> --></td>
+				<td class="isi"><?= $data['network']; ?></td>
 			</tr>
 			<tr>
 				<td class="tb-title">Netmask</td>
 				<td class="titik">:</td>
-				<td class="isi"><!-- <?= $r['netmask']; ?> --></td>
+				<td class="isi"> <?= $data['netmask']; ?> --></td>
 			</tr>
 			<tr>
 				<td class="tb-title">Jumlah Host</td>
 				<td class="titik">:</td>
-				<td class="isi"><!-- <?= $r['jumlah_host']; ?> --></td>
+				<td class="isi"><?= $data['jumlah_host']; ?></td>
 			</tr>
 			<tr>
 				<td class="tb-title">Ip Range</td>
 				<td class="titik">:</td>
-				<td class="isi"><!-- <?= $r['range']; ?> --></td>
+				<td class="isi"><?= $data['rangemin']; ?> - <?= $data['rangemax']; ?></td>
 			</tr>
 			<tr>
 				<td>
