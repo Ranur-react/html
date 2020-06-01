@@ -2,11 +2,12 @@
 class Konfigurasi_IP extends CI_Controller {
 public function __construct() {
 parent::__construct();
-// $this->load->model('Modelkonfigurasi','k');
+$this->load->model('Modelkonfigurasi');
 }
 
 
 public function index() {
+				$qry = $this->Modelkonfigurasi->view($params);
 
 	$template = array(
 	'judul' => 'Data Konfigurasi IP Address',
@@ -67,6 +68,9 @@ public function simpandata()
 					$this->Eror_Validate_massage($value="Data akses berhasil disimpan",$type="success");
 					$this->session->set_flashdata('pesan', $pesansukes);
 					redirect('Konfigurasi_IP/tambah');
+				}else{
+
+					$this->Eror_Validate_massage($value="Data akses GAGAL disimpan",$type="danger");
 				}
 		}
 	}

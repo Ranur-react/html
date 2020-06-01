@@ -1,7 +1,10 @@
 <?php 
 class Modelkonfigurasi extends CI_Model{
 	protected $tabel='konfigurasi';
-
+public function view()
+{
+		return $this->db->query("SELECT*FROM ".$this->tabel)->result_array();
+}
 	public function save()
 	{
 		$data = [
