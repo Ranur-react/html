@@ -26,7 +26,7 @@ public function view()
 
 			$this->db->query("DELETE FROM `jatah_ip`");
 			for ($i=0; $i <= $params['jumlah_host'] ; $i++) { 
-				$ip_right+=$i;
+				$ip_right+=1;
 				$ip=$ipnetwork_left.$ip_right;
 				$this->save_jatahip($no=$i,$ip);
 			}
