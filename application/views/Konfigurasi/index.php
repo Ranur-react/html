@@ -1,14 +1,14 @@
 <script>
 function tambahdata(){
-location.href=('<?php echo site_url('Datakonfig/tambah')?>');}
+location.href=('<?php echo site_url('Konfigurasi_IP/tambah')?>');}
 
 function editdata(ip){
-location.href=('<?php echo site_url('Datakonfig/edit/')?>' + ip);}
+location.href=('<?php echo site_url('Konfigurasi_IP/edit/')?>' + ip);}
 
 function hapusdata(ip){
 pesan=confirm('Yakin Data Dengan IP: "' + ip + '" ini dihapus');
 if(pesan){
-location.href=('<?php echo site_url('Datakonfig/hapus/')?>' + ip);}
+location.href=('<?php echo site_url('Konfigurasi_IP/hapus/')?>' + ip);}
 else
 return false;}
 </script>
