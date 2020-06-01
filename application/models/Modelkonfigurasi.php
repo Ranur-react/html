@@ -9,6 +9,7 @@ public function view()
 	{
 		$data = [
 			'ip_server'   => $params['ip_server'],
+			'prefix'   => $params['prefix'],
 			'network'   => $params['network'],
 			'netmask'   => $params['netmask'],
 			'jumlah_host'   => $params['jumlah_host'],

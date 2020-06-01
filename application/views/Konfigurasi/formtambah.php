@@ -24,6 +24,13 @@
 	<input type="text" name="ip_server" class="form-control">
 	<span class="error ip_server text-red"></span>
 
+	<select name="prefix">
+		<option selected value="/24">Class C /24</option>
+		<option value="/16">Class B /16</option>
+		<option value="/8">Class A /8</option>
+	</select>
+	<span class="error prefix text-red"></span>
+
 	</div>
 </div>
 <div class="row form-group">
