@@ -61,23 +61,33 @@ public function updatedata_STATUS($params)
 }
 
 	public function simpandata($params){
-		$field=array(
-			'namaperangkat'=>$params['nama'],
-			'id'=>$params['id'],
-			'password'=>$params['password'],
-			'level'=>$params['level'],
-			'ip'=>$params['ip_address'],
-			'status'=>'1'
-		);
+				$field=array(
+					'namaperangkat'=>$params['nama'],
+					'id'=>$params['id'],
+					'password'=>$params['password'],
+					'level'=>$params['level'],
+					'ip'=>$params['ip_address'],
+					'status'=>'1'
+				);
+
+		$konfig=$this->Konfigurasi();
+
 					ini_set('display_errors', 1);
 					ini_set('display_startup_errors', 1);
 					error_reporting(E_ALL);
-					$connection = ssh2_connect('192.168.20.1', '22');
+					$connection = ssh2_connect($konfig['ip_server'], '22');
 					ssh2_auth_password($connection, 'admin', '');	
 					$stream = ssh2_exec($connection, ' ip hotspot user add name='.$params['id'].' password='.$params['password'].' profile='.$params['level'].' address='.$params['ip_address'].'');
+
 
 		return $this->db->insert('hakakses',$field);
 
 	}
+
+
+	public function Konfigurasi()
+{
+		return $this->db->query("SELECT*FROM konfigurasi WHERE kode IN (SELECT MAX(kode) FROM konfigurasi)")->row_array();
+}
 }
 ?>

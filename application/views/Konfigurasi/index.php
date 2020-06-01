@@ -60,7 +60,7 @@ return false;}
 			<tr>
 				<td class="tb-title">Netmask</td>
 				<td class="titik">:</td>
-				<td class="isi"> <?= $data['netmask']; ?> --></td>
+				<td class="isi"> <?= $data['netmask']; ?> </td>
 			</tr>
 			<tr>
 				<td class="tb-title">Jumlah Host</td>
