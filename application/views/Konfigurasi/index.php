@@ -40,7 +40,7 @@ return false;}
 <div class="box">
 
 <div class="box-header">
-              <h3 class="box-title"><i class="fa fa-folder"></i> Konfigurasi IP Address</h3>
+              <h3 class="box-title"><i class="fa fa-folder"></i> Info Konfigurasi IP Address</h3>
             </div>
 <div class="box-body">
 	<div class="col col-md-2"></div>

@@ -7,12 +7,13 @@ $this->load->model('Modelkonfigurasi');
 
 
 public function index() {
-				$qry = $this->Modelkonfigurasi->view($params);
+	$qry = $this->Modelkonfigurasi->view();
 
 	$template = array(
 	'judul' => 'Data Konfigurasi IP Address',
 	'menu' => $this->load->view('temp/menu', '', TRUE),
 	'isi' => $this->load->view('Konfigurasi/index', '', TRUE),
+	'data' => $qry = $this->Modelkonfigurasi->view()
 	);
 	$this->parser->parse('temp/temp', $template);
 
