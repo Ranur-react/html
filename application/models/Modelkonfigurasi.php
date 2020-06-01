@@ -5,7 +5,7 @@ public function view()
 {
 		return $this->db->query("SELECT*FROM ".$this->tabel)->result_array();
 }
-	public function save()
+	public function save($params)
 	{
 		$data = [
 			'ip_server'   => $params['ip_server'],
