@@ -57,5 +57,10 @@ public function save_jatahip($no,$ip)
 		];
 		return $this->db->insert($this->tabe2, $data);
 	}
+	
+	public function Konfigurasi()
+{
+		return $this->db->query("SELECT*FROM konfigurasi WHERE kode IN (SELECT MAX(kode) FROM konfigurasi)")->row_array();
+}
 }
 ?>
