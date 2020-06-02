@@ -20,8 +20,8 @@
 	<label class="form-control-label">Ip address Mikrotik</label>
 	</div>
 	<div class="col-12 col-md-6">
-	<input type="text" name="ip_mikrotik" disabled value="192.168.137.201" class="form-control">
-	<input type="text" name="port" value="22" disabled class="form-control">
+	<input type="text" name="ip_mikrotik"  value="192.168.137.201" class="form-control">
+	<input type="text" name="port" value="22"  class="form-control">
 	<span class="error ip_mikrotik text-red"></span>
 
 	</div>
