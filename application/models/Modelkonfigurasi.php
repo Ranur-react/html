@@ -29,7 +29,23 @@ public function view()
 				$ip=$ipnetwork_left.$ip_right;
 				$this->save_jatahip($no=$i,$ip);
 			}
-		return $this->db->insert($this->tabel, $data);
+
+
+				$konfig=$this->Konfigurasi();
+
+					ini_set('display_errors', 1);
+					ini_set('display_startup_errors', 1);
+					error_reporting(E_ALL);
+					$connection = ssh2_connect($konfig['ip_mikrotik'], $konfig['port']);
+					ssh2_auth_password($connection, 'admin', '');	
+				
+					$stream = ssh2_exec($connection, ' ip address add address='.$params['ip_server'].''.$params['prefix'].' network='.$params['network'].' interface=wlan1');
+
+					if ($stream) {
+						# code...
+						return $this->db->insert($this->tabel, $data);
+					}
+
 	}
 public function save_jatahip($no,$ip)
 	{
