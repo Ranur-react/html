@@ -1,0 +1,14 @@
+0. add ip bridge int
+		ip address add address=192.168.50.1/24 network=192.168.50.0 interface=hotspotBrdg
+0. Remove Pool
+		ip pool remove hotspotBrdg
+1. create DHCP Pool  []
+		ip pool add name=hotspotBrdg ranges=192.168.50.1-192.168.50.5
+2. Remove Network
+		ip dhcp-server network remove 0
+3. create network
+		ip dhcp-server network add address=192.168.50.0/24 gateway=192.168.50.1 dns-server=8.8.8.8
+4. Create DHCP
+		ip dhcp-server add name=hotspotBrdg address-pool=hotspotBrdg interface=hotspotBrdg    
+		
+		ip dhcp-server enable hotspotBrdg
