@@ -38,7 +38,9 @@ public function view()
 					error_reporting(E_ALL);
 					$connection = ssh2_connect($konfig['ip_mikrotik'], $konfig['port']);
 					ssh2_auth_password($connection, 'admin', '');	
-				
+					 
+					 $stream = ssh2_exec($connection, 'ip address remove 2');
+
 					$stream = ssh2_exec($connection, ' ip address add address='.$params['ip_server'].''.$params['prefix'].' network='.$params['network'].' interface=wlan1');
 
 					if ($stream) {
