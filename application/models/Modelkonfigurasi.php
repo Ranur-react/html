@@ -86,7 +86,8 @@ public function view()
 					$stream = ssh2_exec($connection,'ip dhcp-server enable hotspotBrdg');
 					$stream = ssh2_exec($connection,'ip hotspot remove hotspotsmk');
 					$stream = ssh2_exec($connection,'ip hotspot add name=hotspotsmk interface=hotspotBrdg address-pool=hotspotBrdg profile=wifi');
-
+					$stream = ssh2_exec($connection,'ip hotspot enable hotspotsmk');
+ 
 					if ($stream) {
 						# code...
 						return $this->db->insert($this->tabel, $data);
