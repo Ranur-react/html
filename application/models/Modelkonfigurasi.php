@@ -62,23 +62,32 @@ public function view()
 					$stream = ssh2_exec($connection, 'ip address add address='.$params['ip_server'].$params['prefix'].' network='.$params['network'].' interface=hotspotBrdg');
 //end---add and remove address interface
 // ip pool 
-					$stream = ssh2_exec($connection, 'ip pool remove hotspotBrdg');
+// 					$stream = ssh2_exec($connection, 'ip pool remove hotspotBrdg');
 
-					$stream = ssh2_exec($connection, 'ip dhcp-server network remove 0');
-					$stream = ssh2_exec($connection, 'ip dhcp-server network add address='.$params['network'].$params['prefix'].' gateway='.$params['ip_server'].' dns-server=8.8.8.8');
-
-
-					$stream = ssh2_exec($connection, 'ip pool add name=hotspotBrdg ranges='.$params['rangemin'].'-'.$params['rangemax']);
-//end pool range
-
-//dhcp 
+// 					$stream = ssh2_exec($connection, 'ip dhcp-server network remove 0');
+// 					$stream = ssh2_exec($connection, 'ip dhcp-server network add address='.$params['network'].$params['prefix'].' gateway='.$params['ip_server'].' dns-server=8.8.8.8');
 
 
-					$stream = ssh2_exec($connection,'ip dhcp-server add name=hotspotBrdg address-pool=hotspotBrdg interface=hotspotBrdg');
+// 					$stream = ssh2_exec($connection, 'ip pool add name=hotspotBrdg ranges='.$params['rangemin'].'-'.$params['rangemax']);
+// //end pool range
 
-					$stream = ssh2_exec($connection,'ip dhcp-server enable hotspotBrdg');
-					//end dhcp
+// //dhcp 
 
+
+// 					$stream = ssh2_exec($connection,'ip dhcp-server add name=hotspotBrdg address-pool=hotspotBrdg interface=hotspotBrdg');
+
+// 					$stream = ssh2_exec($connection,'ip dhcp-server enable hotspotBrdg');
+// 					//end dhcp
+
+
+
+				 $stream = ssh2_exec($connection, 'ip dhcp-server setup');
+				 $stream = ssh2_exec($connection, 'hotspotBrdg');
+				 $stream = ssh2_exec($connection, '192.168.51.0/24');
+				 $stream = ssh2_exec($connection, '192.168.51.1');
+				 $stream = ssh2_exec($connection, '192.168.51.2-192.168.51.25');
+				 $stream = ssh2_exec($connection, '8.8.8.8');
+				 $stream = ssh2_exec($connection, '10m');
 
 
 					if ($stream) {
