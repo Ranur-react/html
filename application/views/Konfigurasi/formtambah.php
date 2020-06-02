@@ -15,13 +15,23 @@
 <?php echo $this->session->flashdata('pesan');?>
 <?php echo form_open('Konfigurasi_IP/simpandata', array('class' => 'form-horizontal')) ?>
 
-
 <div class="row form-group">
 	<div class="col col-md-2">
-	<label class="form-control-label">IP Server Mikrotik</label>
+	<label class="form-control-label">Ip address Mikrotik</label>
 	</div>
 	<div class="col-12 col-md-6">
-	<input type="text" name="ip_server" class="form-control">
+	<input type="text" name="ip_mikrotik" disabled value="192.168.137.201" class="form-control">
+	<input type="text" name="port" value="22" disabled class="form-control">
+	<span class="error ip_mikrotik text-red"></span>
+
+	</div>
+</div>
+<div class="row form-group">
+	<div class="col col-md-2">
+	<label class="form-control-label">IP Hotspot Server </label>
+	</div>
+	<div class="col-12 col-md-6">
+	<input type="text" name="ip_server" autofocus class="form-control">
 	<span class="error ip_server text-red"></span>
 
 	<select name="prefix">

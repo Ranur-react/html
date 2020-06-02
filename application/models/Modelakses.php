@@ -75,12 +75,14 @@ public function updatedata_STATUS($params)
 					ini_set('display_errors', 1);
 					ini_set('display_startup_errors', 1);
 					error_reporting(E_ALL);
-					$connection = ssh2_connect($konfig['ip_server'], '22');
+					$connection = ssh2_connect($konfig['ip_mikrotik'], $konfig['port']);
 					ssh2_auth_password($connection, 'admin', '');	
 					$stream = ssh2_exec($connection, ' ip hotspot user add name='.$params['id'].' password='.$params['password'].' profile='.$params['level'].' address='.$params['ip_address'].'');
 
-
-		return $this->db->insert('hakakses',$field);
+					if ($stream) {
+						# code...
+						return $this->db->insert('hakakses',$field);
+					}
 
 	}
 

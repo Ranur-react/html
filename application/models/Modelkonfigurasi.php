@@ -9,6 +9,8 @@ public function view()
 	public function save($params)
 	{
 		$data = [
+			'ip_mikrotik'   => $params['ip_mikrotik'],
+			'port'   => $params['port'],
 			'ip_server'   => $params['ip_server'],
 			'prefix'   => $params['prefix'],
 			'network'   => $params['network'],

@@ -43,6 +43,8 @@ public function simpandata()
 	{
 		$params = $this->input->post(null, TRUE);
 			
+					$this->form_validation->set_rules('ip_mikrotik', 'ip_mikrotik', 'required');
+					$this->form_validation->set_rules('port', 'ip_mikrotik', 'required');
 					$this->form_validation->set_rules('ip_server', 'ip server', 'required');
 					$this->form_validation->set_rules('network', 'Network', 'required');
 					$this->form_validation->set_rules('netmask', 'Netmask', 'required');
