@@ -39,9 +39,43 @@ public function view()
 					$connection = ssh2_connect($konfig['ip_mikrotik'], $konfig['port']);
 					ssh2_auth_password($connection, 'admin', '');	
 					 
-					 $stream = ssh2_exec($connection, 'ip address remove 2');
 
-					$stream = ssh2_exec($connection, ' ip address add address='.$params['ip_server'].''.$params['prefix'].' network='.$params['network'].' interface=wlan1');
+			
+					//dhcp-server
+							// 0. add ip bridge int
+							// 		ip address add address=192.168.50.1/24 network=192.168.50.0 interface=hotspotBrdg
+							// 0. Remove Pool
+							// 		ip pool remove hotspotBrdg
+							// 1. create DHCP Pool  []
+							// 		ip pool add name=hotspotBrdg ranges=192.168.50.1-192.168.50.5
+							// 2. Remove Network
+							// 		ip dhcp-server network remove 0
+							// 3. create network
+							// 		ip dhcp-server network add address=192.168.50.0/24 gateway=192.168.50.1 dns-server=8.8.8.8
+							// 4. Create DHCP
+							// 		ip dhcp-server add name=hotspotBrdg address-pool=hotspotBrdg interface=hotspotBrdg    
+									
+							// 		ip dhcp-server enable hotspotBrdg
+//add and remove address interface
+				 $stream = ssh2_exec($connection, 'ip address remove 1');
+
+					$stream = ssh2_exec($connection, 'ip address add address='.$params['ip_server'].$params['prefix']' network='.$params['network'].' interface=hotspotBrdg');
+//end---add and remove address interface
+// ip pool 
+					$stream = ssh2_exec($connection, 'ip pool remove hotspotBrdg');
+
+					$stream = ssh2_exec($connection, 'ip pool add name=hotspotBrdg ranges='.$params['rangemin'].'-'.$params['rangemax']);
+//end pool range
+//dhcp 
+					$stream = ssh2_exec($connection, 'ip dhcp-server network remove 0');
+					$stream = ssh2_exec($connection, 'ip dhcp-server network add address='.$params['network'].$params['network'].' gateway='.$params['ip_server'].' dns-server=8.8.8.8');
+
+					$stream = ssh2_exec($connection,'ip dhcp-server add name=hotspotBrdg address-pool=hotspotBrdg interface=hotspotBrdg');
+
+					$stream = ssh2_exec($connection,'ip dhcp-server enable hotspotBrdg');
+					//end dhcp
+
+
 
 					if ($stream) {
 						# code...
@@ -57,7 +91,7 @@ public function save_jatahip($no,$ip)
 		];
 		return $this->db->insert($this->tabe2, $data);
 	}
-	
+
 	public function Konfigurasi()
 {
 		return $this->db->query("SELECT*FROM konfigurasi WHERE kode IN (SELECT MAX(kode) FROM konfigurasi)")->row_array();
