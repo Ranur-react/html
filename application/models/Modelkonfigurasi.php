@@ -62,6 +62,8 @@ public function view()
 					$stream = ssh2_exec($connection, 'ip address add address='.$params['ip_server'].$params['prefix'].' network='.$params['network'].' interface=hotspotBrdg');
 //end---add and remove address interface
 // ip pool 
+					$stream = ssh2_exec($connection, 'ip dhcp-server network remove 0');
+					$stream = ssh2_exec($connection, 'ip dhcp-server remove hotspotBrdg');
 					$stream = ssh2_exec($connection, 'ip pool remove hotspotBrdg');
 
 				
@@ -74,9 +76,9 @@ public function view()
 
 
 
-	$stream = ssh2_exec($connection, 'ip dhcp-server network remove 0');
+	
 					$stream = ssh2_exec($connection, 'ip dhcp-server network add address='.$params['network'].$params['prefix'].' gateway='.$params['ip_server'].' dns-server=8.8.8.8');
-					
+
 					//end dhcp
 
 					$stream = ssh2_exec($connection,'ip dhcp-server add name=hotspotBrdg address-pool=hotspotBrdg interface=hotspotBrdg');
