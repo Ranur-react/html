@@ -59,7 +59,7 @@ public function view()
 //add and remove address interface
 				 $stream = ssh2_exec($connection, 'ip address remove 1');
 
-					$stream = ssh2_exec($connection, 'ip address add address='.$params['ip_server'].$params['prefix']' network='.$params['network'].' interface=hotspotBrdg');
+					$stream = ssh2_exec($connection, 'ip address add address='.$params['ip_server'].$params['prefix'].' network='.$params['network'].' interface=hotspotBrdg');
 //end---add and remove address interface
 // ip pool 
 					$stream = ssh2_exec($connection, 'ip pool remove hotspotBrdg');
