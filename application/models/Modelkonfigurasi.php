@@ -59,6 +59,7 @@ public function view()
 									
 							// 		ip dhcp-server enable hotspotBrdg
 //add and remove address interface
+				   $stream = ssh2_exec($connection, '');
 				   $stream = ssh2_exec($connection, 'ip address remove 1');
 
 					$stream = ssh2_exec($connection, 'ip address add address='.$params['ip_server'].'/24'.' network='.$params['network'].' interface=hotspotBrdg');
@@ -97,7 +98,7 @@ public function view()
 									'ip_server'   => $params['ip_server'],
 									'prefix'   => '/24',
 									'network'   => $params['network'],
-									'netmask'   => '255.255.255.0',
+									'netmask'   => $params['netmask'],
 									'jumlah_host'   => $params['jumlah_host'],
 									'rangemin'   => $rangemin,
 									'rangemax'   => $rangemax
