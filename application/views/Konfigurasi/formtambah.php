@@ -106,6 +106,7 @@ Simpan Konfigurasi
 
 	   		$(document).focusout('.network', function(e) {
  				alert("data berubah");
+ 					let ipserver=$('.ip_server').val();
 			});
 	});
 </script>
