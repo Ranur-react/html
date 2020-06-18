@@ -31,7 +31,7 @@
 	<label class="form-control-label">IP Hotspot Server </label>
 	</div>
 	<div class="col-12 col-md-6">
-	<input type="text" name="ip_server" autofocus class="form-control">
+	<input type="text" name="ip_server" autofocus class="form-control ip_server">
 	<span class="error ip_server text-red"></span>
 
 <!-- 	<select name="prefix">
@@ -49,7 +49,7 @@
 	<label class="form-control-label">Network</label>
 	</div>
 	<div class="col-12 col-md-6">
-	<input type="text" name="network" class="form-control">
+	<input type="text" name="network" class="form-control network">
 	<span class="error network text-red"></span>
 
 	</div>
@@ -59,7 +59,7 @@
 	<label class="form-control-label">Netmask</label>
 	</div>
 	<div class="col-12 col-md-6">
-	<input type="text" name="netmask" class="form-control" value="255.255.255.0" disabled>
+	<input type="text" name="netmask" class="form-control" value="" placeholder="255.255.255.0" >
 	<span class="error netmask text-red"></span>
 
 	</div>
@@ -100,4 +100,12 @@ Simpan Konfigurasi
 <script type="text/javascript">
 	$('.select3').select2();
 	$('.select4').select2();
+
+
+		$(document).ready( function(e) {
+
+	   		$(document).on('input', '.network', function(e) {
+ 				alert("data berubah");
+			});
+	});
 </script>
