@@ -16,7 +16,7 @@ public function view()
 			$a_len=strlen($ipnetwork_left);
 			$ip_right=substr($params['ip_server'], $a_len);
 			$this->db->query("DELETE FROM `jatah_ip`");
-			for ($i=0; $i <= $params['jumlah_host'] ; $i++) { 
+			for ($i=0; $i < $params['jumlah_host'] ; $i++) { 
 				$ip_right+=1;
 				$ip=$ipnetwork_left.$ip_right;
 				$index[$i]=$ip;
@@ -31,7 +31,7 @@ public function view()
 				// 	}
 			$rangemin=$index[0];		
 			$nx=count($index)-1;		
-			$rangemin=$index[$nx];		
+			$rangemax=$index[$nx];		
 
 				$konfig=$this->Konfigurasi();
 
