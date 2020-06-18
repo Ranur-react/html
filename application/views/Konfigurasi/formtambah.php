@@ -59,7 +59,7 @@
 	<label class="form-control-label">Netmask</label>
 	</div>
 	<div class="col-12 col-md-6">
-	<input type="text" name="netmask" class="form-control" value="" placeholder="255.255.255.0" >
+	<input type="text" name="netmask" class="form-control netmask" value="" placeholder="255.255.255.0" >
 	<span class="error netmask text-red"></span>
 
 	</div>
@@ -105,8 +105,7 @@ Simpan Konfigurasi
 		$(document).ready( function(e) {
 
 	   		$(document).focusout('.network', function(e) {
- 				alert("data berubah");
- 					let ipserver=$('.ip_server').val();
+					$('.netmask').val("255.255.255.0");
 			});
 	});
 </script>
