@@ -49,8 +49,8 @@ public function simpandata()
 					$this->form_validation->set_rules('network', 'Network', 'required');
 					$this->form_validation->set_rules('netmask', 'Netmask', 'required');
 					$this->form_validation->set_rules('jumlah_host', 'Jumlah_host', 'required');
-					$this->form_validation->set_rules('rangemin', 'range', 'required');
-					$this->form_validation->set_rules('rangemax', 'range', 'required');
+					// $this->form_validation->set_rules('rangemin', 'range', 'required');
+					// $this->form_validation->set_rules('rangemax', 'range', 'required');
 
 					$this->form_validation->set_message('required', '%s tidak boleh kosong.');
 					$this->form_validation->set_message('is_unique', '%s sudah digunakan.');

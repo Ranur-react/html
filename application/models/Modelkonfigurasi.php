@@ -8,17 +8,7 @@ public function view()
 }
 	public function save($params)
 	{
-		$data = [
-			'ip_mikrotik'   => $params['ip_mikrotik'],
-			'port'   => $params['port'],
-			'ip_server'   => $params['ip_server'],
-			'prefix'   => $params['prefix'],
-			'network'   => $params['network'],
-			'netmask'   => $params['netmask'],
-			'jumlah_host'   => $params['jumlah_host'],
-			'rangemin'   => $params['rangemin'],
-			'rangemax'   => $params['rangemax']
-		];
+		
 
 			$ipnetwork_left=substr($params['network'], 0, -1); //didapat 192.168.1.xxx
 			$a_len=strlen($ipnetwork_left);
@@ -27,6 +17,12 @@ public function view()
 			for ($i=0; $i <= $params['jumlah_host'] ; $i++) { 
 				$ip_right+=1;
 				$ip=$ipnetwork_left.$ip_right;
+					if ($i=0) 
+						{$rangemin=$ip;}
+					else if($i=$params['jumlah_host']){
+							$rangemax=$ip;
+					}
+				
 				$this->save_jatahip($no=$i,$ip);
 			}
 
@@ -69,7 +65,7 @@ public function view()
 				
 
 
-					$stream = ssh2_exec($connection, 'ip pool add name=hotspotBrdg ranges='.$params['rangemin'].'-'.$params['rangemax']);
+					$stream = ssh2_exec($connection, 'ip pool add name=hotspotBrdg ranges='.$rangemin.'-'.$rangemax);
 //end pool range
 
 //dhcp 
@@ -88,6 +84,18 @@ public function view()
 					$stream = ssh2_exec($connection,'ip hotspot add name=hotspotsmk interface=hotspotBrdg address-pool=hotspotBrdg profile=wifi');
 					$stream = ssh2_exec($connection,'ip hotspot enable hotspotsmk');
  
+
+						 $data = [
+									'ip_mikrotik'   => $params['ip_mikrotik'],
+									'port'   => $params['port'],
+									'ip_server'   => $params['ip_server'],
+									'prefix'   => '/24',
+									'network'   => $params['network'],
+									'netmask'   => $params['netmask'],
+									'jumlah_host'   => $params['jumlah_host'],
+									'rangemin'   => $rangemin,
+									'rangemax'   => $rangemax
+								];
 					if ($stream) {
 						# code...
 						return $this->db->insert($this->tabel, $data);

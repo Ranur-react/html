@@ -34,11 +34,12 @@
 	<input type="text" name="ip_server" autofocus class="form-control">
 	<span class="error ip_server text-red"></span>
 
-	<select name="prefix">
+<!-- 	<select name="prefix">
 		<option selected value="/24">Class C /24</option>
 		<option value="/16">Class B /16</option>
 		<option value="/8">Class A /8</option>
-	</select>
+	</select> -->
+	
 	<span class="error prefix text-red"></span>
 
 	</div>
@@ -73,7 +74,7 @@
 
 	</div>
 </div>
-<div class="row form-group">
+<!-- <div class="row form-group">
 	<div class="col col-md-2">
 	<label class="form-control-label">Range</label>
 	</div>
@@ -84,7 +85,7 @@
 
 	</div>
 </div>
-
+ -->
 <div class="row form-group">
 <div class="col col-md-2">
 <button type="submit" class="btn btn-success">
