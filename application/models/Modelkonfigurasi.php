@@ -11,6 +11,7 @@ public function view()
 		
 			$rangemin="";
 			$rangemax="";
+			$index[0]="";
 			$ipnetwork_left=substr($params['network'], 0, -1); //didapat 192.168.1.xxx
 			$a_len=strlen($ipnetwork_left);
 			$ip_right=substr($params['ip_server'], $a_len);
@@ -18,17 +19,17 @@ public function view()
 			for ($i=0; $i <= $params['jumlah_host'] ; $i++) { 
 				$ip_right+=1;
 				$ip=$ipnetwork_left.$ip_right;
-					if ($i=0) 
-						{$rangemin=$ip;
-						}
-					if($i=$params['jumlah_host'])
-					{
-							$rangemax=$ip;
-					}
-				
+				$index[$i++]=$ip;
 				$this->save_jatahip($no=$i,$ip);
 			}
-
+				// if ($i=0) 
+				// 		{$rangemin=$ip;
+				// 		}
+				// 	if($i=$params['jumlah_host'])
+				// 	{
+				// 			$rangemax=$ip;
+				// 	}
+			$rangemin=$index[0];		
 
 				$konfig=$this->Konfigurasi();
 
