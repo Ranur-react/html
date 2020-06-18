@@ -97,7 +97,7 @@ public function view()
 									'ip_server'   => $params['ip_server'],
 									'prefix'   => '/24',
 									'network'   => $params['network'],
-									'netmask'   => $params['netmask'],
+									'netmask'   => '255.255.255.0',
 									'jumlah_host'   => $params['jumlah_host'],
 									'rangemin'   => $rangemin,
 									'rangemax'   => $rangemax
