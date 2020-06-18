@@ -18,11 +18,13 @@ public function view()
 			for ($i=0; $i <= $params['jumlah_host'] ; $i++) { 
 				$ip_right+=1;
 				$ip=$ipnetwork_left.$ip_right;
-					if ($i=0) 
-						{$rangemin=$ip;}
-					else if($i=$params['jumlah_host']){
-							$rangemax=$ip;
-					}
+					// if ($i=0) 
+					// 	{$rangemin=$ip;
+					// 	}
+					// else if($i=$params['jumlah_host'])
+					// {
+					// 		$rangemax=$ip;
+					// }
 				
 				$this->save_jatahip($no=$i,$ip);
 			}
