@@ -104,7 +104,7 @@ Simpan Konfigurasi
 
 		$(document).ready( function(e) {
 
-	   		$(document).on('input', '.network', function(e) {
+	   		$(document).focusout('.network', function(e) {
  				alert("data berubah");
 			});
 	});
