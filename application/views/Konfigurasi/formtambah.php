@@ -39,7 +39,7 @@
 		<option value="/16">Class B /16</option>
 		<option value="/8">Class A /8</option>
 	</select> -->
-	
+
 	<span class="error prefix text-red"></span>
 
 	</div>
@@ -59,7 +59,7 @@
 	<label class="form-control-label">Netmask</label>
 	</div>
 	<div class="col-12 col-md-6">
-	<input type="text" name="netmask" class="form-control">
+	<input type="text" name="netmask" class="form-control" value="255.255.255.0" disabled>
 	<span class="error netmask text-red"></span>
 
 	</div>
