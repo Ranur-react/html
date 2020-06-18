@@ -42,6 +42,17 @@ public function view()
 					ssh2_auth_password($connection, 'admin', '');	
 					 
 
+						 $data = [
+									'ip_mikrotik'   => $params['ip_mikrotik'],
+									'port'   => $params['port'],
+									'ip_server'   => $params['ip_server'],
+									'prefix'   => '/24',
+									'network'   => $params['network'],
+									'netmask'   => $params['netmask'],
+									'jumlah_host'   => $params['jumlah_host'],
+									'rangemin'   => $rangemin,
+									'rangemax'   => $rangemax
+								];
 			
 					//dhcp-server
 							// 0. add ip bridge int
@@ -95,17 +106,6 @@ public function view()
 					$stream = ssh2_exec($connection,'ip hotspot enable hotspotsmk');
  
 
-						 $data = [
-									'ip_mikrotik'   => $params['ip_mikrotik'],
-									'port'   => $params['port'],
-									'ip_server'   => $params['ip_server'],
-									'prefix'   => '/24',
-									'network'   => $params['network'],
-									'netmask'   => $params['netmask'],
-									'jumlah_host'   => $params['jumlah_host'],
-									'rangemin'   => $rangemin,
-									'rangemax'   => $rangemax
-								];
 					if ($stream) {
 						# code...
 						return $this->db->insert($this->tabel, $data);
