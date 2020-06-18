@@ -19,7 +19,7 @@ public function view()
 			for ($i=0; $i <= $params['jumlah_host'] ; $i++) { 
 				$ip_right+=1;
 				$ip=$ipnetwork_left.$ip_right;
-				$index[$i++]=$ip;
+				$index[$i]=$ip;
 				$this->save_jatahip($no=$i,$ip);
 			}
 				// if ($i=0) 
@@ -30,6 +30,8 @@ public function view()
 				// 			$rangemax=$ip;
 				// 	}
 			$rangemin=$index[0];		
+			$nx=count($index)-1;		
+			$rangemin=$index[$nx];		
 
 				$konfig=$this->Konfigurasi();
 
