@@ -22,8 +22,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | If you need to allow multiple domains, remember that this file is still
 | a PHP script and you can easily do that on your own.
 |
-*/
-$config['base_url'] = 'http://192.168.1.1';
+*/http://localhost/coding-elearning/
+// $config['base_url'] = 'http://192.168.1.1';
+$config['base_url'] = 'http://localhost/html/';
 
 /*
 |--------------------------------------------------------------------------

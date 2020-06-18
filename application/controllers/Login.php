@@ -35,7 +35,7 @@ function cekuser() {
 	redirect('login/index');
 	}
 }
-if ($this->session->userdata('masuk') == true) {redirect('temp/index');
+if ($this->session->userdata('masuk') == true) {redirect('Home/index');
 } else {
 $this->keluar();
 }

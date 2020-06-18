@@ -59,7 +59,7 @@
 	<label class="form-control-label">Netmask</label>
 	</div>
 	<div class="col-12 col-md-6">
-	<input type="text" name="netmask" class="form-control netmask" value="" placeholder="255.255.255.0" >
+	<input type="text" name="netmask" class="form-control netmask" value="" placeholder="" >
 	<span class="error netmask text-red"></span>
 
 	</div>
@@ -105,7 +105,25 @@ Simpan Konfigurasi
 		$(document).ready( function(e) {
 
 	   		$(document).focusout('.network', function(e) {
-					$('.netmask').val("255.255.255.0");
+	   				setTimeout(function(){
+						$('.netmask').val("255.");
+	   				},10);
+	   					   				setTimeout(function(){
+	   										$('.netmask').val("255.25");
+	   				},20);	   				setTimeout(function(){
+						$('.netmask').val("255.255");
+	   				},30);	   				setTimeout(function(){
+						$('.netmask').val("255.255.2");
+	   				},40);	   				setTimeout(function(){
+						$('.netmask').val("255.255.25");
+	   				},50);	   				setTimeout(function(){
+					$('.netmask').val("255.255.255.");
+	   				},60);	   				setTimeout(function(){
+						$('.netmask').val("255.255.255.0");
+	   				},70);
+
+
+
 			});
 	});
 </script>
