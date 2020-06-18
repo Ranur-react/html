@@ -9,7 +9,8 @@ public function view()
 	public function save($params)
 	{
 		
-
+			$rangemin="";
+			$rangemax="";
 			$ipnetwork_left=substr($params['network'], 0, -1); //didapat 192.168.1.xxx
 			$a_len=strlen($ipnetwork_left);
 			$ip_right=substr($params['ip_server'], $a_len);
