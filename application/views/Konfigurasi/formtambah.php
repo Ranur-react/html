@@ -126,7 +126,9 @@ Simpan Konfigurasi
 
 			});
 			$(document).focusout('.ip_serverinput', function(e) {
-				alert("Tes");
+				let server=$('.ip_serverinput').val();
+					let ipsplit=server.split(".");
+					alert(ipsplit[0]);
 				});
 	});
 </script>
