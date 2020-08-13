@@ -128,7 +128,8 @@ Simpan Konfigurasi
 			$(document).focusout('.ip_serverinput', function(e) {
 				let server=$('.ip_serverinput').val();
 					let ipsplit=server.split(".");
-					alert(ipsplit[0]);
+					$('.ip_serverinput').val(ipsplit[0]+"."+ipsplit[1]+""+ipsplit[2]+"."+0)
+					// alert();
 				});
 	});
 </script>
