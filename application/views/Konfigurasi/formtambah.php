@@ -31,7 +31,7 @@
 	<label class="form-control-label">IP Hotspot Server </label>
 	</div>
 	<div class="col-12 col-md-6">
-	<input type="text" name="ip_server" autofocus class="form-control ip_server">
+	<input type="text" name="ip_server" autofocus class="form-control ip_serverinput">
 	<span class="error ip_server text-red"></span>
 
 <!-- 	<select name="prefix">
@@ -125,5 +125,8 @@ Simpan Konfigurasi
 
 
 			});
+			$(document).focusout('.ip_serverinput', function(e) {
+				alert("Tes");
+				});
 	});
 </script>

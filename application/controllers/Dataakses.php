@@ -115,6 +115,7 @@ public function tambah() {
 	);
 	$this->parser->parse('temp/temp', $template);
 }
+
 //================================================================================
 public function simpandata() {
 			$params = $this->input->post(null, TRUE);

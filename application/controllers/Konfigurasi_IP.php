@@ -6,6 +6,7 @@ $this->load->model('Modelkonfigurasi');
 }
 
 
+
 public function index() {
 
 	$d['data']=$this->Modelkonfigurasi->view();
