@@ -129,7 +129,7 @@ Simpan Konfigurasi
 				let server=$('.ip_serverinput').val();
 					let ipsplit=server.split(".");
 					$('.network').val("")
-					$('.network').val(ipsplit[0]+"."+ipsplit[1]+""+ipsplit[2]+"."+0);
+					$('.network').val(ipsplit[0]+"."+ipsplit[1]+"."+ipsplit[2]+"."+0);
 					// alert();
 				});
 	});
