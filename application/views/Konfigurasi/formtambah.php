@@ -130,7 +130,9 @@ Simpan Konfigurasi
 					let ipsplit=server.split(".");
 					$('.network').val("")
 					$('.network').val(ipsplit[0]+"."+ipsplit[1]+"."+ipsplit[2]+"."+0);
-					// alert();
+					let n = server.length; 
+
+					alert(n);
 				});
 	});
 </script>
