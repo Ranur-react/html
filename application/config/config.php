@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 *///http://localhost/coding-elearning/
-$config['base_url'] = 'http://192.168.1.1';
-// $config['base_url'] = 'http://localhost/html/';
+// $config['base_url'] = 'http://192.168.1.1';
+$config['base_url'] = 'http://localhost/html/';
 
 /*
 |--------------------------------------------------------------------------

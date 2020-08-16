@@ -31,7 +31,7 @@
 	<label class="form-control-label">IP Hotspot Server </label>
 	</div>
 	<div class="col-12 col-md-6">
-	<input type="text" name="ip_serverX" autofocus class="form-control ip_serverinput">
+	<input type="text" name="ip_server" autofocus class="form-control ip_serverinput">
 	<span class="error ip_server text-red"></span>
 
 <!-- 	<select name="prefix">
@@ -42,22 +42,6 @@
 
 	<span class="error prefix text-red"></span>
 
-	</div>
-</div>
-<div class="row form-group hidden">
-	<div class="col col-md-2">
-	<label class="form-control-label">IP Hotspot Server Hiden</label>
-	</div>
-	<div class="col-12 col-md-6">
-	<input type="text" name="ip_server_otg" class="form-control ip_server_otg">
-	</div>
-</div>
-<div class="row form-group hidden">
-	<div class="col col-md-2">
-	<label class="form-control-label">Prefix Hiden</label>
-	</div>
-	<div class="col-12 col-md-6">
-	<input type="text" name="Prefixotg" class="form-control Prefixotg">
 	</div>
 </div>
 <div class="row form-group">
@@ -117,31 +101,30 @@ Simpan Konfigurasi
 	$('.select3').select2();
 	$('.select4').select2();
 
+
 		$(document).ready( function(e) {
-let jumlahhostrange=254;
-					$('.jumlah_hostinput').val(0);
 
-	  //  		$(document).focusout('.network', function(e) {
-	  //  				setTimeout(function(){
-			// 			$('.netmask').val("255.");
-	  //  				},10);
-	  //  					   				setTimeout(function(){
-	  //  										$('.netmask').val("255.25");
-	  //  				},20);	   				setTimeout(function(){
-			// 			$('.netmask').val("255.255");
-	  //  				},30);	   				setTimeout(function(){
-			// 			$('.netmask').val("255.255.2");
-	  //  				},40);	   				setTimeout(function(){
-			// 			$('.netmask').val("255.255.25");
-	  //  				},50);	   				setTimeout(function(){
-			// 		$('.netmask').val("255.255.255.");
-	  //  				},60);	   				setTimeout(function(){
-			// 			$('.netmask').val("255.255.255.0");
-	  //  				},70);
+	   		$(document).focusout('.network', function(e) {
+	   				setTimeout(function(){
+						$('.netmask').val("255.");
+	   				},10);
+	   					   				setTimeout(function(){
+	   										$('.netmask').val("255.25");
+	   				},20);	   				setTimeout(function(){
+						$('.netmask').val("255.255");
+	   				},30);	   				setTimeout(function(){
+						$('.netmask').val("255.255.2");
+	   				},40);	   				setTimeout(function(){
+						$('.netmask').val("255.255.25");
+	   				},50);	   				setTimeout(function(){
+					$('.netmask').val("255.255.255.");
+	   				},60);	   				setTimeout(function(){
+						$('.netmask').val("255.255.255.0");
+	   				},70);
 
 
 
-			// });
+			});
 			$(document).focusout('.ip_serverinput', function(e) {
 				let server=$('.ip_serverinput').val();
 					let ipsplitprefix=server.split("/");
@@ -167,8 +150,6 @@ let jumlahhostrange=254;
 				let ip_per_blok=ip.split(".");
 
 				let prefix=ipsplitprefix[1];
-				$('.Prefixotg').val("/"+prefix);
-				
 					if(prefix==24){
 						ipb1=ip_per_blok[0];
 						ipb2=ip_per_blok[1];
@@ -176,9 +157,6 @@ let jumlahhostrange=254;
 						ipb4=ip_per_blok[3];
 						$('.network').val("")
 					$('.network').val(ipb1+"."+ipb2+"."+ipb3+"."+0);
-					$('.netmask').val("255.255.255.0");
-								$('.ip_server_otg').val(ipb1+"."+ipb2+"."+ipb3+"."+ipb4)
-
 					}
 					else if(prefix>24){
 						ipb1=ip_per_blok[0];
@@ -188,7 +166,6 @@ let jumlahhostrange=254;
 						let x=32-prefix;
 						let	range=Math.pow(2, x);
 						let	bitmx=256;
-						let netmask=bitmx-range;
 						let n=bitmx / range;
 						let net=0;
 						let netstate=0;
@@ -206,29 +183,14 @@ let jumlahhostrange=254;
 
 							}else{
 								$('.network').val("")
-								$('.ip_server_otg').val(ipb1+"."+ipb2+"."+ipb3+"."+ipb4)
-
 								$('.network').val(ipb1+"."+ipb2+"."+ipb3+"."+netstate);
-								$('.netmask').val("255.255.255."+netmask);
-								jumlahhostrange=range-2;
-								
 							}
+								// alert(netstate);	
+								// alert("Networknya adalah 192.168.1."+net);	
+						// ipb4=ipb4^
 
-					}	
-				});
-$('.jumlah_hostinput').on("input", function(e){
-			
-					// alert("klik");
-					let valu=$(this).val();
-					if(jumlahhostrange<valu){
-								$('.jumlah_host').text("Host maximal adalah "+jumlahhostrange+" Host");
-								$(this).val(jumlahhostrange);
 
-					}else{
-						$('.jumlah_host').text("");
 					}
-					
 				});
-
 	});
 </script>

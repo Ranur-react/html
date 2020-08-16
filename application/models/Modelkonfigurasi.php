@@ -14,7 +14,7 @@ public function view()
 			$index[0]="";
 			$ipnetwork_left=substr($params['network'], 0, -1); //didapat 192.168.1.xxx
 			$a_len=strlen($ipnetwork_left);
-			$ip_right=substr($params['ip_server'], $a_len);
+			$ip_right=substr($params['ip_server_otg'], $a_len);
 			$this->db->query("DELETE FROM `jatah_ip`");
 			for ($i=0; $i < $params['jumlah_host'] ; $i++) { 
 				$ip_right+=1;
@@ -45,8 +45,8 @@ public function view()
 						 $data = [
 									'ip_mikrotik'   => $params['ip_mikrotik'],
 									'port'   => $params['port'],
-									'ip_server'   => $params['ip_server'],
-									'prefix'   => '/24',
+									'ip_server'   => $params['ip_server_otg'],
+									'prefix'   => $params['Prefixotg'],
 									'network'   => $params['network'],
 									'netmask'   => $params['netmask'],
 									'jumlah_host'   => $params['jumlah_host'],
