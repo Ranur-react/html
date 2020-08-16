@@ -50,11 +50,11 @@ for ($i=0; $i < $params['jumlah_host'] ; $i++) {
 				$konfig=$this->Konfigurasi();
 // ------------------------------------------------------------------
 
-					// ini_set('display_errors', 1);
-					// ini_set('display_startup_errors', 1);
-					// error_reporting(E_ALL);
-					// $connection = ssh2_connect($konfig['ip_mikrotik'], $konfig['port']);
-					// ssh2_auth_password($connection, 'admin', '');	
+					ini_set('display_errors', 1);
+					ini_set('display_startup_errors', 1);
+					error_reporting(E_ALL);
+					$connection = ssh2_connect($konfig['ip_mikrotik'], $konfig['port']);
+					ssh2_auth_password($connection, 'admin', '');	
 					 
 // ------------------------------------------------------------------
 
@@ -77,21 +77,21 @@ for ($i=0; $i < $params['jumlah_host'] ; $i++) {
 // ------------------------------------------------------------------
 
 
-					// $stream = ssh2_exec($connection, 'ip address add address='.$params['ip_server'].'/24'.' network='.$params['network'].' interface=hotspotBrdg');
+					$stream = ssh2_exec($connection, 'ip address add address='.$params['ip_server'].'/24'.' network='.$params['network'].' interface=hotspotBrdg');
 // ------------------------------------------------------------------
 
 //end---add and remove address interface
 // ip pool 
 // ------------------------------------------------------------------
 
-					// $stream = ssh2_exec($connection, 'ip dhcp-server network remove 0');
-					// $stream = ssh2_exec($connection, 'ip dhcp-server remove hotspotBrdg');
-					// $stream = ssh2_exec($connection, 'ip pool remove hotspotBrdg');
+					$stream = ssh2_exec($connection, 'ip dhcp-server network remove 0');
+					$stream = ssh2_exec($connection, 'ip dhcp-server remove hotspotBrdg');
+					$stream = ssh2_exec($connection, 'ip pool remove hotspotBrdg');
 
 				
 
 
-					// $stream = ssh2_exec($connection, 'ip pool add name=hotspotBrdg ranges='.$rangemin.'-'.$rangemax);
+					$stream = ssh2_exec($connection, 'ip pool add name=hotspotBrdg ranges='.$rangemin.'-'.$rangemax);
 // ------------------------------------------------------------------
 
 //end pool range
@@ -102,7 +102,7 @@ for ($i=0; $i < $params['jumlah_host'] ; $i++) {
 
 // ------------------------------------------------------------------
 	
-					// $stream = ssh2_exec($connection, 'ip dhcp-server network add address='.$params['network'].'/24'.' gateway='.$params['ip_server'].' dns-server=8.8.8.8');
+					$stream = ssh2_exec($connection, 'ip dhcp-server network add address='.$params['network'].'/24'.' gateway='.$params['ip_server'].' dns-server=8.8.8.8');
 // ------------------------------------------------------------------
 
 
@@ -110,21 +110,21 @@ for ($i=0; $i < $params['jumlah_host'] ; $i++) {
 // ------------------------------------------------------------------
 
 
-					// $stream = ssh2_exec($connection,'ip dhcp-server add name=hotspotBrdg address-pool=hotspotBrdg interface=hotspotBrdg');
+					$stream = ssh2_exec($connection,'ip dhcp-server add name=hotspotBrdg address-pool=hotspotBrdg interface=hotspotBrdg');
 
-					// $stream = ssh2_exec($connection,'ip dhcp-server enable hotspotBrdg');
-					// $stream = ssh2_exec($connection,'ip hotspot remove hotspotsmk');
-					// $stream = ssh2_exec($connection,'ip hotspot add name=hotspotsmk interface=hotspotBrdg address-pool=hotspotBrdg profile=wifi');
-					// $stream = ssh2_exec($connection,'ip hotspot enable hotspotsmk');
+					$stream = ssh2_exec($connection,'ip dhcp-server enable hotspotBrdg');
+					$stream = ssh2_exec($connection,'ip hotspot remove hotspotsmk');
+					$stream = ssh2_exec($connection,'ip hotspot add name=hotspotsmk interface=hotspotBrdg address-pool=hotspotBrdg profile=wifi');
+					$stream = ssh2_exec($connection,'ip hotspot enable hotspotsmk');
  
 // ------------------------------------------------------------------
 
-					// if ($stream) {
-					// 	# code...
-					// 	return $this->db->insert($this->tabel, $data);
-					// }
-// ------------------------------------------------------------------
+					if ($stream) {
+						# code...
 						return $this->db->insert($this->tabel, $data);
+					}
+// ------------------------------------------------------------------
+						// return $this->db->insert($this->tabel, $data);
 					
 
 	}
