@@ -60,6 +60,23 @@
 	<input type="text" name="Prefixotg" class="form-control Prefixotg">
 	</div>
 </div>
+<div class="row form-group ">
+	<div class="col col-md-2">
+	<label class="form-control-label">Net_kanan Hiden</label>
+	</div>
+	<div class="col-12 col-md-6">
+	<input type="text" name="net_kanan" class="form-control net_kanan">
+	</div>
+</div>
+<div class="row form-group ">
+	<div class="col col-md-2">
+	<label class="form-control-label">Net_kiri Hiden</label>
+	</div>
+	<div class="col-12 col-md-6">
+	<input type="text" name="net_kiri" class="form-control net_kiri">
+	</div>
+</div>
+
 <div class="row form-group">
 	<div class="col col-md-2">
 	<label class="form-control-label">Network</label>
@@ -178,6 +195,8 @@ let jumlahhostrange=254;
 					$('.network').val(ipb1+"."+ipb2+"."+ipb3+"."+0);
 					$('.netmask').val("255.255.255.0");
 								$('.ip_server_otg').val(ipb1+"."+ipb2+"."+ipb3+"."+ipb4)
+					$('.net_kiri').val(ipb1+"."+ipb2+"."+ipb3+".");
+								$('.net_kanan').val(0);
 
 					}
 					else if(prefix>24){
@@ -209,6 +228,10 @@ let jumlahhostrange=254;
 								$('.ip_server_otg').val(ipb1+"."+ipb2+"."+ipb3+"."+ipb4)
 
 								$('.network').val(ipb1+"."+ipb2+"."+ipb3+"."+netstate);
+								
+								$('.net_kiri').val(ipb1+"."+ipb2+"."+ipb3+".");
+								$('.net_kanan').val(netstate);
+
 								$('.netmask').val("255.255.255."+netmask);
 								jumlahhostrange=range-2;
 								
