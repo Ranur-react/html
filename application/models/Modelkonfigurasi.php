@@ -76,7 +76,7 @@ for ($i=0; $i < $params['jumlah_host'] ; $i++) {
 //add and remove address interface
 // ------------------------------------------------------------------
 
-					$stream = ssh2_exec($connection, 'ip address remove 1');
+					// $stream = ssh2_exec($connection, 'ip address remove 1');
 					$stream = ssh2_exec($connection, 'ip address add address='.$params['ip_server_otg'].'/24'.' network='.$params['network'].' interface=hotspotBrdg');
 // ------------------------------------------------------------------
 
