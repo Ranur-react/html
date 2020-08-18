@@ -88,7 +88,7 @@ for ($i=0; $i < $params['jumlah_host'] ; $i++) {
 // ip pool 
 // ------------------------------------------------------------------
 
-$stream = ssh2_exec($connection, 'ip address set address=$params['ip_server_otg']/24 network=$params['network'] numbers=1 ');
+$stream = ssh2_exec($connection, 'ip address set address='.$params['ip_server_otg'].'/24'.' network='.$params['network'].'  numbers=1 ');
 
 					$stream = ssh2_exec($connection, 'ip dhcp-server network remove 0');
 					$stream = ssh2_exec($connection, 'ip dhcp-server remove hotspotBrdg');
