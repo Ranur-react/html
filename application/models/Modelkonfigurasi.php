@@ -89,7 +89,7 @@ for ($i=0; $i < $params['jumlah_host'] ; $i++) {
 // ------------------------------------------------------------------
 
 // $stream = ssh2_exec($connection, 'ip address set address='.$params['ip_server_otg'].'/24'.' network='.$params['network'].'  numbers=1 ');
-$stream = ssh2_exec($connection, 'ip address set address=2.3.2.2/24 network=2.2.2.0 interface=hotspotBrdg numbers=1');
+$stream = ssh2_exec($connection, 'ip address set address=11.111.1.2/24 network=11.111.1.0 interface=hotspotBrdg 1');
 
 					$stream = ssh2_exec($connection, 'ip dhcp-server network remove 0');
 					$stream = ssh2_exec($connection, 'ip dhcp-server remove hotspotBrdg');
