@@ -101,7 +101,7 @@ for ($i=0; $i < $params['jumlah_host'] ; $i++) {
 				
 
 
-// SSSS					$stream = ssh2_exec($connection, 'ip pool add name=hotspotBrdg ranges='.$rangemin.'-'.$rangemax);
+				$stream = ssh2_exec($connection, 'ip pool add name=hotspotBrdg ranges='.$rangemin.'-'.$rangemax);
 // ------------------------------------------------------------------
 
 //end pool range
@@ -111,9 +111,9 @@ for ($i=0; $i < $params['jumlah_host'] ; $i++) {
 
 
 // ------------------------------------------------------------------
-	// SSS				$stream = ssh2_exec($connection, 'ip address add address='.$params['ip_server_otg'].'/24'.' network='.$params['network'].' interface=hotspotBrdg');
+$stream = ssh2_exec($connection, 'ip address add address='.$params['ip_server_otg'].'/24'.' network='.$params['network'].' interface=hotspotBrdg');
 
-				// sss	$stream = ssh2_exec($connection, 'ip dhcp-server network add address='.$params['network'].'/24'.' gateway='.$params['ip_server_otg'].' dns-server=8.8.8.8');
+					$stream = ssh2_exec($connection, 'ip dhcp-server network add address='.$params['network'].'/24'.' gateway='.$params['ip_server_otg'].' dns-server=8.8.8.8');
 // ------------------------------------------------------------------
 
 
@@ -121,11 +121,11 @@ for ($i=0; $i < $params['jumlah_host'] ; $i++) {
 // ------------------------------------------------------------------
 
 
-				// ss	$stream = ssh2_exec($connection,'ip dhcp-server add name=hotspotBrdg address-pool=hotspotBrdg interface=hotspotBrdg');
+	$stream = ssh2_exec($connection,'ip dhcp-server add name=hotspotBrdg address-pool=hotspotBrdg interface=hotspotBrdg');
 
-					// $stream = ssh2_exec($connection,'ip dhcp-server enable hotspotBrdg');
-					// $stream = ssh2_exec($connection,'ip hotspot add name=hotspotsmk interface=hotspotBrdg address-pool=hotspotBrdg profile=wifi');
-					// $stream = ssh2_exec($connection,'ip hotspot enable hotspotsmk');
+					$stream = ssh2_exec($connection,'ip dhcp-server enable hotspotBrdg');
+					$stream = ssh2_exec($connection,'ip hotspot add name=hotspotsmk interface=hotspotBrdg address-pool=hotspotBrdg profile=wifi');
+					$stream = ssh2_exec($connection,'ip hotspot enable hotspotsmk');
  
 // ------------------------------------------------------------------
 
