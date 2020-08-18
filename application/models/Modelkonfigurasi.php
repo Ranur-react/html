@@ -48,10 +48,19 @@ for ($i=0; $i < $params['jumlah_host'] ; $i++) {
 			$rangemax=$index[$nx];		
 
 				$konfig=$this->Konfigurasi();
-
-
-
 // ------------------------------------------------------------------
+
+					ini_set('display_errors', 1);
+					ini_set('display_startup_errors', 1);
+					error_reporting(E_ALL);
+					$connection = ssh2_connect($konfig['ip_mikrotik'], $konfig['port']);
+					ssh2_auth_password($connection, 'admin', '');	
+					 
+// ------------------------------------------------------------------
+
+// delete save_jatahip
+					// $stream = ssh2_exec($connection, 'ip address remove 1');
+
 
 // -----------------------
 
@@ -73,38 +82,21 @@ for ($i=0; $i < $params['jumlah_host'] ; $i++) {
 //add and remove address interface
 // ------------------------------------------------------------------
 
-					ini_set('display_errors', 1);
-					ini_set('display_startup_errors', 1);
-					error_reporting(E_ALL);
-
-					$connection = ssh2_connect($konfig['ip_mikrotik'], $konfig['port']);
-					ssh2_auth_password($connection, 'admin', '');	
-					 
-// ------------------------------------------------------------------
-
-// delete save_jatahip
-
-
-
-	
+					$stream = ssh2_exec($connection, 'ip address add address='.$params['ip_server_otg'].'/24'.' network='.$params['network'].' interface=hotspotBrdg');
 // ------------------------------------------------------------------
 
 //end---add and remove address interface
 // ip pool 
 // ------------------------------------------------------------------
 
-// $stream = ssh2_exec($connection, 'ip address set address='.$params['ip_server_otg'].'/24'.' network='.$params['network'].'  numbers=1 ');
-
-					$stream = ssh2_exec($connection, 'ip dhcp-server network set address=1.1.1.0/24 gateway=1.1.1.1 dns-server=8.8.8.8 0');
+					$stream = ssh2_exec($connection, 'ip dhcp-server network remove 0');
 					$stream = ssh2_exec($connection, 'ip dhcp-server remove hotspotBrdg');
 					$stream = ssh2_exec($connection, 'ip pool remove hotspotBrdg');
-					$stream = ssh2_exec($connection,'ip hotspot remove hotspotsmk');
-					// $stream = ssh2_exec($connection, 'ip address remove numbers=1');
 
 				
 
 
-				$stream = ssh2_exec($connection, 'ip pool add name=hotspotBrdg ranges='.$rangemin.'-'.$rangemax);
+					$stream = ssh2_exec($connection, 'ip pool add name=hotspotBrdg ranges='.$rangemin.'-'.$rangemax);
 // ------------------------------------------------------------------
 
 //end pool range
@@ -114,10 +106,8 @@ for ($i=0; $i < $params['jumlah_host'] ; $i++) {
 
 
 // ------------------------------------------------------------------
-// $stream = ssh2_exec($connection, 'ip address set address=1.1.1.1/24 network=1.1.1.1 interface=hotspotBrdg numbers=1');
-
-					// $stream = ssh2_exec($connection, 'ip dhcp-server network add address='.$params['network'].'/24'.' gateway='.$params['ip_server_otg'].' dns-server=8.8.8.8');
-					// $stream = ssh2_exec('ip dhcp-server network set address=1.1.1.0/24 gateway=1.1.1.1 dns-server=8.8.8.8 0');
+	
+					$stream = ssh2_exec($connection, 'ip dhcp-server network add address='.$params['network'].'/24'.' gateway='.$params['ip_server_otg'].' dns-server=8.8.8.8');
 // ------------------------------------------------------------------
 
 
@@ -125,9 +115,10 @@ for ($i=0; $i < $params['jumlah_host'] ; $i++) {
 // ------------------------------------------------------------------
 
 
-	$stream = ssh2_exec($connection,'ip dhcp-server add name=hotspotBrdg address-pool=hotspotBrdg interface=hotspotBrdg');
+					$stream = ssh2_exec($connection,'ip dhcp-server add name=hotspotBrdg address-pool=hotspotBrdg interface=hotspotBrdg');
 
 					$stream = ssh2_exec($connection,'ip dhcp-server enable hotspotBrdg');
+					$stream = ssh2_exec($connection,'ip hotspot remove hotspotsmk');
 					$stream = ssh2_exec($connection,'ip hotspot add name=hotspotsmk interface=hotspotBrdg address-pool=hotspotBrdg profile=wifi');
 					$stream = ssh2_exec($connection,'ip hotspot enable hotspotsmk');
  
