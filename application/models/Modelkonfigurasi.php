@@ -89,13 +89,14 @@ for ($i=0; $i < $params['jumlah_host'] ; $i++) {
 // ------------------------------------------------------------------
 
 
-					$stream = ssh2_exec($connection, 'ip dhcp-server network remove 0');
-					$stream = ssh2_exec($connection, 'ip dhcp-server network remove 1');
-					$stream = ssh2_exec($connection, 'ip dhcp-server network remove 2');
+					$stream = ssh2_exec($connection, 'ip dhcp-server network remove  numbers=0');
+					$stream = ssh2_exec($connection, 'ip dhcp-server network remove numbers=1');
+					$stream = ssh2_exec($connection, 'ip dhcp-server network remove numbers=2');
 					$stream = ssh2_exec($connection, 'ip dhcp-server remove hotspotBrdg');
 					$stream = ssh2_exec($connection, 'ip pool remove hotspotBrdg');
 					$stream = ssh2_exec($connection,'ip hotspot remove hotspotsmk');
-					$stream = ssh2_exec($connection, 'ip address remove 1');
+					$stream = ssh2_exec($connection, 'ip address remove numbers=1');
+					$stream = ssh2_exec($connection, 'ip address remove numbers=2');
 
 				
 
