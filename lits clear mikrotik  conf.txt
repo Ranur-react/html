@@ -1,0 +1,11 @@
+1. delete ip intterface Bridge
+	-> ip address remove 1
+2. delete dhcp server
+	-> ip dhcp-server remove hotspotBrdg
+3. delete dhcp derver network
+	->$stream = ssh2_exec($connection, 'ip dhcp-server network remove 0');
+
+4.  delete ip pool
+	-> ip pool remove hotspotBrdg
+5. delet hotspot name
+	-> ip hotspot remove hotspotsmk
