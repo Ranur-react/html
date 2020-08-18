@@ -93,8 +93,6 @@ for ($i=0; $i < $params['jumlah_host'] ; $i++) {
 					$stream = ssh2_exec($connection, 'ip dhcp-server remove hotspotBrdg');
 					$stream = ssh2_exec($connection, 'ip pool remove hotspotBrdg');
 
-				
-
 
 					$stream = ssh2_exec($connection, 'ip pool add name=hotspotBrdg ranges='.$rangemin.'-'.$rangemax);
 // ------------------------------------------------------------------
@@ -146,5 +144,31 @@ public function save_jatahip($no,$ip)
 {
 		return $this->db->query("SELECT*FROM konfigurasi WHERE kode IN (SELECT MAX(kode) FROM konfigurasi)")->row_array();
 }
+
+
+public function HapusKonfigurasipadaMikrotik()
+{
+	$konfig=$this->Konfigurasi();
+// ------------------------------------------------------------------
+
+					ini_set('display_errors', 1);
+					ini_set('display_startup_errors', 1);
+					error_reporting(E_ALL);
+					$connection = ssh2_connect($konfig['ip_mikrotik'], $konfig['port']);
+					ssh2_auth_password($connection, 'admin', '');	
+
+					$stream = ssh2_exec($connection, ' ');
+					$stream = ssh2_exec($connection, ' ');
+					$stream = ssh2_exec($connection, 'ip address remove 1');
+					$stream = ssh2_exec($connection, '');
+					$stream = ssh2_exec($connection, 'ip dhcp-server network remove 0');
+					$stream = ssh2_exec($connection, '');
+
+					$stream = ssh2_exec($connection, 'ip dhcp-server remove hotspotBrdg');
+					$stream = ssh2_exec($connection, '');
+					$stream = ssh2_exec($connection, 'ip pool remove hotspotBrdg');
+
+}
+
 }
 ?>

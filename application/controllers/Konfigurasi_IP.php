@@ -20,6 +20,10 @@ public function index() {
 
 
 }
+public function Bersih()
+{
+	$this->Modelkonfigurasi->HapusKonfigurasipadaMikrotik();
+}
 public function tambah() {
 	
 	// $data['ip_server']=$this->k()->result_array();
