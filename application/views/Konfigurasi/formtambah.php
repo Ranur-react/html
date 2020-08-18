@@ -60,7 +60,7 @@
 	<input type="text" name="Prefixotg" class="form-control Prefixotg">
 	</div>
 </div>
-<div class="row form-group ">
+<div class="row form-group hidden">
 	<div class="col col-md-2">
 	<label class="form-control-label">Net_kanan Hiden</label>
 	</div>
@@ -68,7 +68,7 @@
 	<input type="text" name="net_kanan" class="form-control net_kanan">
 	</div>
 </div>
-<div class="row form-group ">
+<div class="row form-group hidden">
 	<div class="col col-md-2">
 	<label class="form-control-label">Net_kiri Hiden</label>
 	</div>
